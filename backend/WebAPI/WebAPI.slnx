@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="../BAL/BAL.csproj" />
+  <Project Path="../DAL/DAL.csproj" Id="2e00093a-4bc5-42b0-9674-2fc31566d5a5" />
   <Project Path="../Shared/Shared.csproj" />
   <Project Path="WebAPI.csproj" />
 </Solution>

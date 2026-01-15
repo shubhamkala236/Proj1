@@ -30,5 +30,20 @@ namespace WebAPI.Controllers
 				throw new Exception($"Message: {ex.Message}, StackTrace: {ex.StackTrace}");
 			}
 		}
+
+		[HttpPost("register")]
+		public async Task<IActionResult> Register([FromBody] RegisterUser user)
+		{
+			try
+			{
+				await _authBAL.Register(user);
+				return Ok(new { status = "User created successfully" });
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Message: {ex.Message}, StackTrace: {ex.StackTrace}");
+			}
+
+		}
 	}
 }

@@ -1,6 +1,8 @@
 using System.Text;
 using BAL.Auth;
+using DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Shared.Auth;
@@ -13,6 +15,9 @@ if (string.IsNullOrWhiteSpace(jwtSecret))
 {
     throw new System.InvalidOperationException("JWT secret is not configured. Set the environment variable 'JWT_SECRET'.");
 }
+
+//DB
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
